@@ -14,19 +14,49 @@
     <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
     <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script>
+
+        const int_rates = [.05, .06, .07];
+        const years = 5;
+        const principal = 1000;
+        var currFormatter = new Intl.NumberFormat(undefined, {style: "currency", currency: "USD"});
+
+        $(document).ready(function(){
+            var table_text = "";
+            var amt = 0;
+            var next_princ = principal;
+            for (let rate of int_rates) {
+                table_text += "<table><tr><th>Year</th><th>Amount on deposit</th><th>Interest Rate</th>";
+                for (var yr = 1; yr <= years; yr += 1) {
+                    amt = next_princ * (1 + rate)**yr;
+                    // next_princ = amt;
+                    table_text += "<tr><td>" + yr + "</td><td>" + currFormatter.format(amt) + "</td><td>" + rate + "</td>";
+                }
+                table_text += "</table><br><br>";
+            }
+            document.getElementById("output").innerHTML = table_text;
+
+        });
+
+    </script>
+
     <style>
-        .grid {
-            grid-template-rows: 125px auto 140px;
-        }
+
+        tr:nth-child(2n + 2) { background-color: rgb(195, 137, 204); }
+        tr:nth-child(2n + 1) { background-color: rgb(120, 136, 195); }
+        tr:first-child { color: rgba(255, 255, 255, 0.96); background-color: rgb(56, 61, 217); }
+
     </style>
 
     <link rel="shortcut icon" href="satellite.png">
-    <title>Homework 4</title>
+    <title>Homework 4 Part 2</title>
 </head>
 
 <body class="grid">
     <header class="grid-area grid-area-1">
-        <h1 style=text-align:center>CNIT 133 Homework 4 - Looping Statements</h1>
+        <h1 style=text-align:center>Homework 4 Part 2</h1>
     </header>
 
     <aside class="grid-area grid-area-2">
@@ -49,16 +79,18 @@
 
         <nav>
             <ul>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4_pt1.html">Homework 4 Part 1: Sum and product of interval sequence
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4.html">Homework 4 Main</a></li>
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4_pt1.html">Homework 4 Part 1: Short summary
                 </a></li>
-                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4_pt2.html">Homework 4 Part 2: Learn about compound interest
-                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4_ec.html">Homework 4 Extra Credit: Star Square
+                <li><a href="https://hills.ccsf.edu/~gashwor1/hw4_ec.html">Homework 4 Extra Credit: Short summary
                 </a></li>
             </ul>
         </nav>
 
         <article>
-            <h2>Hi!</h2><p>This will be homework assignment #4!</p>
+            <br>
+            <h2>Learn about compound interest</h2><p></p>
+            <p id="output"></p>
         </article>
     </main>
 

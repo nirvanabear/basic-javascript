@@ -49,6 +49,8 @@ h1 { color: var(--title); }
 
 .grid-area-2 li { margin: 6px; font-weight: 600; }
 
+.grid-area-3 td { color: #4a1595; }
+
 /* .grid-area-2 li a { text-decoration: none; color: #fff} */
 .grid-area-2 li a { text-decoration: none; color: var(--menu); }
 
