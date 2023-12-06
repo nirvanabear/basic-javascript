@@ -1,27 +1,70 @@
 <!DOCTYPE html>
 <!-- George Ashworth -->
-<!-- 8/29/23 -->
+<!-- 12/5/23 -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Blank webpage for homework assignments.">
+    <meta name="description" content="Main page with hidden links and toggle reveal.">
     <meta property="og:title" content="Homework 7">
-    <meta property="og:url" content="https://hills.ccsf.edu/~gashwor1/homework7.html">
-    <meta property="og:description" content="Blank webpage for homework assignments.">
-    <meta property="og:image" content="https://hills.ccsf.edu/~gashwor1/george_photo.jpg">
+    <meta property="og:url" content="https://hills.ccsf.edu/~gashwor1/hw7.html">
+    <meta property="og:description" content="Main page with hidden links and toggle reveal.">
 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <link rel="stylesheet" type="text/css" media="screen and (max-width: 480px)" href="mobile1.css">
     <link rel="stylesheet" type="text/css" media="screen and (min-width: 481px)" href="homework1.css"> 
 
-    <!-- <link rel="stylesheet" href="homework1.css"> -->
+
+    <style>
+        .title {
+            background: url('open.png') no-repeat 0 11px;
+            padding: 10px 0 0 25px;
+            cursor: pointer;
+            font-size: 120%;
+            font-weight: bold;
+            list-style-type: none;
+        }
+        li.close {
+            background-image: url('close.png');
+        }
+        .answer {
+            margin-left: 50px;	
+        }
+        .grid {
+            grid-template-rows: 125px auto 140px;
+        }
+        .grid-area-3 { background-color:rgb(91, 48, 234); color:white }
+
+        .grid-area-3 a:link { color:white; }
+
+        .grid-area-3 a:visited { color:orange; }
+
+    </style>
+        
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        
+    <script>
+        $(document).ready(function() {
+            $('.answer').hide();
+            $('.title').click(function() { $(this).next('.answer').toggle()
+                if ($('.answer:visible').length == 0) {
+                    $(this).removeClass('close')
+                } 
+                else {
+                    $(this).addClass('close')
+                };
+            });
+        });
+    </script>
+
+
     <link rel="shortcut icon" href="satellite.png">
     <title>Homework 7</title>
 </head>
 
 <body class="grid">
     <header class="grid-area grid-area-1">
-        <h1 style=text-align:center>Homework 7</h1>
+        <h1 style=text-align:center>CNIT 133 Homework 7 - Object Model and Event Model</h1>
     </header>
 
     <aside class="grid-area grid-area-2">
@@ -41,8 +84,18 @@
     </aside>
 
     <main class="grid-area grid-area-3">
+        <div class="main">
+            <nav>
+                <ul>
+                    <li class="title">PART 1</li>
+                    <li class="answer">Clickable font and background options for a passage of text. <a href="https://hills.ccsf.edu/~gashwor1/hw7_pt1.html">Homework 7 Part 1</a></li>
+                    <li class="title">PART 2 </li>
+                    <li class="answer">Navigation bar demonstration. <a href="https://hills.ccsf.edu/~gashwor1/hw7_pt2.html">Homework 7 Part 2
+                    </a></li>
+                </ul>
+            </nav>
+        </div>
         <article>
-            <!-- <img style="float:left;" SRC="george_photo.jpg" alt="George's photo"> -->
             <h2>Hi!</h2><p>This will be homework assignment #7!</p>
         </article>
     </main>
